@@ -50,7 +50,7 @@ public class CharacterController1 : MonoBehaviour
             }
             if (Input.touchCount > 0 && !gameEnded)
             {
-                var ray = Camera.main.ScreenPointToRay(Input.GetTouch(i++).position);
+                var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -112,6 +112,7 @@ public class CharacterController1 : MonoBehaviour
                                 {
                                     Debug.Log("Cannot Move");
                                     invalidMove.SetActive(true);
+                                    Handheld.Vibrate();
                                     StartCoroutine(Coroutine1());
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
@@ -137,7 +138,7 @@ public class CharacterController1 : MonoBehaviour
             }
             if (Input.touchCount > 0 && !gameEnded)
             {
-                var ray = Camera.main.ScreenPointToRay(Input.GetTouch(i++).position);
+                var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -199,6 +200,7 @@ public class CharacterController1 : MonoBehaviour
                                 {
                                     Debug.Log("Cannot Move");
                                     invalidMove.SetActive(true);
+                                    Handheld.Vibrate();
                                     StartCoroutine(Coroutine1());
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
