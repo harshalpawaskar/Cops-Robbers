@@ -28,7 +28,6 @@ public class CharacterController1 : MonoBehaviour
     private bool selected = false;
     private string selectedPlatform;
     private bool gameEnded;
-    private int i = 0;
 
     void Start()
     {
@@ -106,7 +105,6 @@ public class CharacterController1 : MonoBehaviour
                                     selected = false;
                                     start = true;
                                     turn = true;
-                                    i = 0;
                                 }
                                 else
                                 {
@@ -194,7 +192,6 @@ public class CharacterController1 : MonoBehaviour
                                     selected = false;
                                     start = true;
                                     turn = false;
-                                    i = 0;
                                 }
                                 else
                                 {
