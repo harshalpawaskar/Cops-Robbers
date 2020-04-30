@@ -7,12 +7,12 @@ public class Menu : MonoBehaviour
 {
     public void PlayGame()
     {
-        Application.LoadLevel(1);
+        SceneManager.LoadScene(1);
     }
 
     public void Tutorial()
     {
-        Application.LoadLevel(2);
+        SceneManager.LoadScene(2);
     }
 
     public void Quit()

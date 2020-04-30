@@ -18,6 +18,8 @@ public class CharacterController1 : MonoBehaviour
     public GameObject invalidMove;
     public GameObject wrongPiece;
     public Text wrongPieceText;
+    public GameObject turnPanel;
+    public GameObject pausePanel;
     public GameObject[] platforms;
     public GameObject[] Robbers;
     public GameObject[] Cops;
@@ -37,6 +39,7 @@ public class CharacterController1 : MonoBehaviour
 
     void Update()
     {
+        #region Movement
         if (!turn)
         {
             turnText.text = "Robber's Turn";
@@ -211,6 +214,17 @@ public class CharacterController1 : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        if(!gameEnded)
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameEnded = true;
+                turnPanel.SetActive(false);
+                pausePanel.SetActive(true);
+            }
+        }
     }
 
     private bool CheckAnyValidMove()
@@ -300,17 +314,21 @@ public class CharacterController1 : MonoBehaviour
         wrongPiece.SetActive(false);
     }
 
-    [Obsolete]
     public void PlayAgain()
     {
         Time.timeScale = 1f;
         turn = false;
-        Application.LoadLevel(0);
+        SceneManager.LoadScene(1);
     }
 
-    public void ExitGame()
+    public void Menu()
     {
         Time.timeScale = 1f;
-        Application.Quit();
+        SceneManager.LoadScene(0);
+    }
+
+    public void resetGameEnded()
+    {
+        gameEnded = false;
     }
 }
