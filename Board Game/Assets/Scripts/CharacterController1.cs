@@ -46,7 +46,8 @@ public class CharacterController1 : MonoBehaviour
             if(!CheckAnyValidMove())
             {
                 gameEnded = true;
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
+                turnPanel.SetActive(false);
                 resultPanel.SetActive(true);
                 resultText.text = "COPS WON";
             }
@@ -81,12 +82,13 @@ public class CharacterController1 : MonoBehaviour
                             }
                         }
                     }
-                    else if (selection.CompareTag("Cop") && selected == false)
+                    /*else if (selection.CompareTag("Cop") && selected == false)
                     {
-                        wrongPiece.SetActive(true);
-                        wrongPieceText.text = "ROBBER'S TURN";
-                        StartCoroutine(Coroutine2());
-                    }
+                        Handheld.Vibrate();
+                        //wrongPiece.SetActive(true);
+                        //wrongPieceText.text = "ROBBER'S TURN";
+                        //StartCoroutine(Coroutine2());
+                    }*/
                     else
                     {
                         if (selected)
@@ -133,7 +135,8 @@ public class CharacterController1 : MonoBehaviour
             if (!CheckAnyValidMove())
             {
                 gameEnded = true;
-                Time.timeScale = 0f;
+                turnPanel.SetActive(false);
+                //Time.timeScale = 0f;
                 resultPanel.SetActive(true);
                 resultText.text = "ROBBERS WON"; 
             }
@@ -168,12 +171,13 @@ public class CharacterController1 : MonoBehaviour
                             }
                         }
                     }
-                    else if (selection.CompareTag("Robber") && selected == false)
+                    /*else if (selection.CompareTag("Robber") && selected == false)
                     {
-                        wrongPiece.SetActive(true);
-                        wrongPieceText.text = "COP'S TURN";
-                        StartCoroutine(Coroutine2());
-                    }
+                        Handheld.Vibrate();
+                        //wrongPiece.SetActive(true);
+                        //wrongPieceText.text = "COP'S TURN";
+                        //StartCoroutine(Coroutine2());
+                    }*/
                     else
                     {
                         if (selected)
@@ -316,14 +320,14 @@ public class CharacterController1 : MonoBehaviour
 
     public void PlayAgain()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         turn = false;
         SceneManager.LoadScene(1);
     }
 
     public void Menu()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 

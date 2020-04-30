@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CharacterController1
     - Menu
+    - Tutorial
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
@@ -63,11 +64,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9910}
     - Class: 114
+      Script: {instanceID: 10328}
+    - Class: 114
       Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10742}
+      Script: {instanceID: 10744}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11234}
+    - Class: 114
+      Script: {instanceID: 11630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -116,11 +121,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10328}
     - Class: 114
-      Script: {instanceID: 10742}
+      Script: {instanceID: 10744}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 11234}
     - Class: 114
-      Script: {instanceID: 11628}
+      Script: {instanceID: 11630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -175,11 +180,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9910}
     - Class: 114
+      Script: {instanceID: 10328}
+    - Class: 114
       Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10742}
+      Script: {instanceID: 10516}
     - Class: 114
-      Script: {instanceID: 11232}
+      Script: {instanceID: 10744}
+    - Class: 114
+      Script: {instanceID: 11234}
+    - Class: 114
+      Script: {instanceID: 11630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -417,7 +428,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 5a8bec52d3fa8cea323983a907c978cc
+      Hash: 964062e11e8b01b5d46f772fdf2a3472
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterController1
@@ -433,6 +444,12 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkTransformVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: 88d1bb3f40e546e4f962953a6e14ef09
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Tutorial
   - hash:
       serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
@@ -720,4 +737,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/Tutorial.unity
-  playerPath: H:/UnityProjects/Cops-Robbers/Board Game/new2.apk
+  playerPath: H:/UnityProjects/Cops-Robbers/Board Game/Build/new4.apk
