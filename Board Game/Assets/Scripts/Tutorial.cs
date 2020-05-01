@@ -10,9 +10,11 @@ public class Tutorial : MonoBehaviour
     public GameObject guidePanel1;
     public GameObject guidePanel2;
     public GameObject guidePanel3;
+    public GameObject guidePanel6;
     public GameObject panel2;
     public GameObject resultPanel;
     public GameObject skipPanel;
+    public GameObject nextButton1;
     public Material selectedRobber;
     public Material defaultRobber;
     public Material selectedCop;
@@ -32,7 +34,7 @@ public class Tutorial : MonoBehaviour
     {
         if (panel2Activated)
         {
-            turnText.text = "Robber's Turn";
+            turnText.text = "Player1's Turn";
             if (Input.touchCount > 0 && i == 0)
             {
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
@@ -62,7 +64,7 @@ public class Tutorial : MonoBehaviour
                         var selectionRenderer = selection.GetComponent<Renderer>();
                         selectionRenderer.material = defaultRobber;
                         selected = false;
-                        turnText.text = "Cop's Turn";
+                        turnText.text = "Player2's Turn";
                         StartCoroutine(Coroutine1());
                         i = 1;
                     }
@@ -95,8 +97,8 @@ public class Tutorial : MonoBehaviour
                         selectionRenderer.material = defaultRobber;
                         selected = false;
                         guidePanel3.SetActive(false);
-                        panel2.SetActive(false);
-                        resultPanel.SetActive(true);
+                        guidePanel6.SetActive(true);
+                        nextButton1.SetActive(true);
                     }
                 }
             }
@@ -108,7 +110,7 @@ public class Tutorial : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject cop1 = GameObject.Find("Cop1");
         cop1.transform.position = new Vector3(-6.22f, 0.3f, 6.32f);
-        turnText.text = "Robber's Turn";
+        turnText.text = "Player1's Turn";
         guidePanel3.SetActive(true);
     }
 

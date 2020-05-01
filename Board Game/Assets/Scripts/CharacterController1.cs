@@ -34,7 +34,7 @@ public class CharacterController1 : MonoBehaviour
     void Start()
     {
         gameEnded = false;
-        turnText.text = "Robber's Turn";
+        turnText.text = PlayerPrefs.GetString("Player1Name") + "'s Turn";
     }
 
     void Update()
@@ -42,14 +42,14 @@ public class CharacterController1 : MonoBehaviour
         #region Movement
         if (!turn)
         {
-            turnText.text = "Robber's Turn";
+            turnText.text = PlayerPrefs.GetString("Player1Name") + "'s Turn";
             if(!CheckAnyValidMove())
             {
                 gameEnded = true;
                 //Time.timeScale = 0f;
                 turnPanel.SetActive(false);
                 resultPanel.SetActive(true);
-                resultText.text = "COPS WON";
+                resultText.text = PlayerPrefs.GetString("Player2Name") + " Won";
             }
             if (Input.touchCount > 0 && !gameEnded)
             {
@@ -131,14 +131,14 @@ public class CharacterController1 : MonoBehaviour
         }
         else
         {
-            turnText.text = "Cop's Turn";
+            turnText.text = PlayerPrefs.GetString("Player2Name") + "'s Turn";
             if (!CheckAnyValidMove())
             {
                 gameEnded = true;
                 turnPanel.SetActive(false);
                 //Time.timeScale = 0f;
                 resultPanel.SetActive(true);
-                resultText.text = "ROBBERS WON"; 
+                resultText.text = PlayerPrefs.GetString("Player1Name") + " Won"; 
             }
             if (Input.touchCount > 0 && !gameEnded)
             {
