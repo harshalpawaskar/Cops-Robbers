@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     public InputField inputField1;
     public InputField inputField2;
     public Text text;
+    public Text[] playerTexts;
 
     private void Start()
     {
@@ -39,6 +40,13 @@ public class Menu : MonoBehaviour
         {
             PlayerPrefs.SetString("Player1Name", inputField1.text);
             PlayerPrefs.SetString("Player2Name", inputField2.text);
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                playerTexts[0].text = inputField1.text;
+                playerTexts[1].text = inputField1.text;
+                playerTexts[2].text = inputField2.text;
+                playerTexts[3].text = inputField2.text;
+            }
             text.text = "Changes Made Successfully.";
             text.color = Color.green;
             StartCoroutine(Coroutine1());

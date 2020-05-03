@@ -14,35 +14,53 @@ public class CharacterController1 : MonoBehaviour
     public Material defaultCop;
     public Text turnText;
     public Text resultText;
+    public Text wrongPieceText;
     public GameObject resultPanel;
     public GameObject invalidMove;
     public GameObject wrongPiece;
-    public Text wrongPieceText;
     public GameObject turnPanel;
     public GameObject pausePanel;
+    public GameObject[] playerTextPanel;
     public GameObject[] platforms;
     public GameObject[] Robbers;
     public GameObject[] Cops;
+    public Text[] playerTexts;
     private bool turn = false;
-    private string emptyPlatform;
-    private bool start = true;
-    private RaycastHit hit1;
     private bool selected = false;
-    private string selectedPlatform;
+    private bool start = true;
     private bool gameEnded;
+    private string emptyPlatform;
+    private RaycastHit hit1;
+    private string selectedPlatform;
+    //Shader shader1;
+    //Shader shader2;
+    public Color color;
 
     void Start()
     {
         gameEnded = false;
         turnText.text = PlayerPrefs.GetString("Player1Name") + "'s Turn";
+        turnText.color = Color.red;
+        //shader1 = Shader.Find("Standard");
+        //shader2 = Shader.Find("PlayerShader");
+        playerTexts[0].text = PlayerPrefs.GetString("Player1Name");
+        playerTexts[1].text = PlayerPrefs.GetString("Player1Name");
+        playerTexts[2].text = PlayerPrefs.GetString("Player2Name");
+        playerTexts[3].text = PlayerPrefs.GetString("Player2Name");
     }
 
     void Update()
     {
+        playerTexts[0].transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere1").transform.position);
+        playerTexts[1].transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere2").transform.position);
+        playerTexts[2].transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere3").transform.position);
+        playerTexts[3].transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere4").transform.position);
+
         #region Movement
         if (!turn)
         {
             turnText.text = PlayerPrefs.GetString("Player1Name") + "'s Turn";
+            turnText.color = Color.red;
             if(!CheckAnyValidMove())
             {
                 gameEnded = true;
@@ -64,6 +82,7 @@ public class CharacterController1 : MonoBehaviour
                         if (selectionRenderer != null)
                         {
                             selectionRenderer.material = selectedRobber;
+                            //selectionRenderer.material.shader = shader2;
                             selected = true;
                         }
                         if (start)
@@ -78,6 +97,7 @@ public class CharacterController1 : MonoBehaviour
                                 selection = hit1.transform;
                                 selectionRenderer = selection.GetComponent<Renderer>();
                                 selectionRenderer.material = defaultRobber;
+                                //selectionRenderer.material.shader = shader1;
                                 hit1 = hit;
                             }
                         }
@@ -107,6 +127,7 @@ public class CharacterController1 : MonoBehaviour
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
                                     selectionRenderer.material = defaultRobber;
+                                    //selectionRenderer.material.shader = shader1;
                                     selected = false;
                                     start = true;
                                     turn = true;
@@ -120,6 +141,7 @@ public class CharacterController1 : MonoBehaviour
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
                                     selectionRenderer.material = defaultRobber;
+                                    //selectionRenderer.material.shader = shader1;
                                     selected = false;
                                     start = true;
                                 }
@@ -132,6 +154,7 @@ public class CharacterController1 : MonoBehaviour
         else
         {
             turnText.text = PlayerPrefs.GetString("Player2Name") + "'s Turn";
+            turnText.color = color;
             if (!CheckAnyValidMove())
             {
                 gameEnded = true;
@@ -153,6 +176,7 @@ public class CharacterController1 : MonoBehaviour
                         if (selectionRenderer != null)
                         {
                             selectionRenderer.material = selectedCop;
+                            //selectionRenderer.material.shader = shader2;
                             selected = true;
                         }
                         if (start)
@@ -167,6 +191,7 @@ public class CharacterController1 : MonoBehaviour
                                 selection = hit1.transform;
                                 selectionRenderer = selection.GetComponent<Renderer>();
                                 selectionRenderer.material = defaultCop;
+                                //selectionRenderer.material.shader = shader1;
                                 hit1 = hit;
                             }
                         }
@@ -196,6 +221,7 @@ public class CharacterController1 : MonoBehaviour
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
                                     selectionRenderer.material = defaultCop;
+                                    //selectionRenderer.material.shader = shader1;
                                     selected = false;
                                     start = true;
                                     turn = false;
@@ -209,6 +235,7 @@ public class CharacterController1 : MonoBehaviour
                                     selection = hit1.transform;
                                     var selectionRenderer = selection.GetComponent<Renderer>();
                                     selectionRenderer.material = defaultCop;
+                                    //selectionRenderer.material.shader = shader1;
                                     selected = false;
                                     start = true;
                                 }

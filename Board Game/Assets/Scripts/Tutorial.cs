@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
     public Text turnText;
+    public GameObject player1Text1;
+    public GameObject player1Text2;
+    public GameObject player2Text1;
+    public GameObject player2Text2;
     public GameObject guidePanel1;
     public GameObject guidePanel2;
     public GameObject guidePanel3;
@@ -23,18 +27,26 @@ public class Tutorial : MonoBehaviour
     private bool selected;
     private RaycastHit hit1;
     private bool panel2Activated = false;
+    public Color color;
+    //Shader shader1;
+    //Shader shader2;
 
     void Start()
     {
-        i = 0;
+        i = 2;
         selected = false;
+        //shader1 = Shader.Find("Standard");
+        //shader2 = Shader.Find("Outlined");
     }
 
     void Update()
     {
+        player1Text1.transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere1").transform.position);
+        player1Text2.transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere2").transform.position);
+        player2Text1.transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere3").transform.position);
+        player2Text2.transform.position = Camera.main.WorldToScreenPoint(GameObject.Find("Sphere4").transform.position);
         if (panel2Activated)
         {
-            turnText.text = "Player1's Turn";
             if (Input.touchCount > 0 && i == 0)
             {
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
@@ -47,6 +59,7 @@ public class Tutorial : MonoBehaviour
                         var selectionRenderer = selection.GetComponent<Renderer>();
                         if (selectionRenderer != null)
                         {
+                            //selectionRenderer.material.shader = shader2;
                             selectionRenderer.material = selectedRobber;
                             selected = true;
                             hit1 = hit;
@@ -62,9 +75,11 @@ public class Tutorial : MonoBehaviour
                         hit1.transform.position = pos;
                         var selection = hit1.transform;
                         var selectionRenderer = selection.GetComponent<Renderer>();
+                        //selectionRenderer.material.shader = shader1;
                         selectionRenderer.material = defaultRobber;
                         selected = false;
                         turnText.text = "Player2's Turn";
+                        turnText.color = color;
                         StartCoroutine(Coroutine1());
                         i = 1;
                     }
@@ -83,6 +98,7 @@ public class Tutorial : MonoBehaviour
                         if (selectionRenderer != null)
                         {
                             selectionRenderer.material = selectedRobber;
+                            //selectionRenderer.material.shader = shader2;
                             selected = true;
                             hit1 = hit;
                         }
@@ -95,10 +111,14 @@ public class Tutorial : MonoBehaviour
                         var selection = hit1.transform;
                         var selectionRenderer = selection.GetComponent<Renderer>();
                         selectionRenderer.material = defaultRobber;
+                        //selectionRenderer.material.shader = shader1;
+                        turnText.text = "Player2's Turn";
+                        turnText.color = color;
                         selected = false;
                         guidePanel3.SetActive(false);
                         guidePanel6.SetActive(true);
                         nextButton1.SetActive(true);
+                        i = 2;
                     }
                 }
             }
@@ -111,7 +131,13 @@ public class Tutorial : MonoBehaviour
         GameObject cop1 = GameObject.Find("Cop1");
         cop1.transform.position = new Vector3(-6.22f, 0.3f, 6.32f);
         turnText.text = "Player1's Turn";
+        turnText.color = Color.red;
         guidePanel3.SetActive(true);
+    }
+
+    public void StartTutorial()
+    {
+        i = 0;
     }
 
     public void SkipTutorial()
